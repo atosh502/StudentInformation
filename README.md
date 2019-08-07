@@ -9,15 +9,15 @@ grant all on eadd_db.* to 'eadd_user'@'localhost';
 ### Create tables:
 create the Users table
 ~~~
-CREATE TABLE Users( 
-uid int(20) NOT NULL AUTO_INCREMENT, 
-uname VARCHAR(60) NOT NULL, 
-password VARCHAR(60) NOT NULL, 
-PRIMARY KEY(uid));
+create table Users( 
+uid int(20) not null auto_increment, 
+uname varchar(60) not null, 
+password varchar(60) not null, 
+primary key(uid));
 ~~~
 insert the admin into Users
 ~~~
-INSERT INTO Users(uname, password) VALUES('admin', 'admin');
+insert into Users(uname, password) values('admin', 'admin');
 ~~~
 create the student table
 ~~~
@@ -44,3 +44,8 @@ references student(sid)
 on delete cascade
 on update cascade);
 ~~~
+### Login Credentials
+* username: `admin`, password: `admin`
+
+### Starting Page
+* http://localhost:8080/JSF_StudentInformation/faces/login.xhtml
