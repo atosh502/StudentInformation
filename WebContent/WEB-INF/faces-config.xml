@@ -9,6 +9,7 @@
 		<navigation-case>
 			<from-outcome>admin</from-outcome>
 			<to-view-id>/admin.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 	
@@ -17,6 +18,7 @@
 		<navigation-case>
 			<from-outcome>student</from-outcome>
 			<to-view-id>/student.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 	
@@ -25,6 +27,7 @@
 		<navigation-case>
 			<from-outcome>admin</from-outcome>
 			<to-view-id>/admin.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 
