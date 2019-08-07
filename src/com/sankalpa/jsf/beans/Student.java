@@ -7,13 +7,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import com.sankalpa.jsf.dao.StudentDAO;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class Student implements Serializable{
 
 	private static final long serialVersionUID = 5976281625639035872L;
@@ -103,13 +103,133 @@ public class Student implements Serializable{
 		// if save successful else stay at student.xhtml
 		return "admin";
 	}
+
 	
 	private List<String> districtList;
 	
-	public List<String> getDistrictList(){
+	public List<String> getDistrictList() {
 		return districtList;
 	}
 	
+	public void loadDistricts() {
+		this.districtList = getDistricts(province);
+	}
+	
+	private List<String> localLevelList;
+	
+	public List<String> getLocalLevelList(){
+		return localLevelList;
+	}
+	
+	public void loadLocalLevels() {
+		this.localLevelList = AdministrativeLevels.getLocalLevels(district);
+	}
+	
+	public List<String> getDistricts(int province){
+		if (province == 1) {
+			return Arrays.asList(
+					"Bhojpur District",
+					"Dhankuta District",
+					"Ilam District",
+					"Jhapa District",
+					"Khotang District",
+					"Morang District",
+					"Okhaldhunga District",
+					"Panchthar District",
+					"Sankhuwasabha district",
+					"Solukhumbu District",
+					"Sunsari District",
+					"Taplejung District",
+					"Terhathum District",
+					"Udayapur District"
+					);
+		} else if (province == 2) {
+			return Arrays.asList(
+					"Saptari District",
+					"Siraha District",
+					"Dhanusa District",
+					"Mahottari District",
+					"Sarlahi District",
+					"Bara District",
+					"Parsa District",
+					"Rautahat District"
+					);
+					
+		} else if (province == 3) {
+			return Arrays.asList(
+					"Sindhuli District",
+					"Ramechhap District",
+					"Dolakha District",
+					"Bhaktapur District",
+					"Dhading District",
+					"Kathmandu District",
+					"Kavrepalanchok District",
+					"Lalitpur District",
+					"Nuwakot District",
+					"Rasuwa District",
+					"Sindhupalchok District",
+					"Chitwan District",
+					"Makwanpur District"
+					);
+		} else if (province == 4) {
+			return Arrays.asList(
+					"Gorkha District",
+					"Kaski District",
+					"Lamjung District",
+					"Syangja District",
+					"Tanahun District",
+					"Manang District",
+					"Nawalpur District",
+					"Baglung District",
+					"Myagdi District",
+					"Parbat District",
+					"Mustang District"
+					);
+			
+		} else if (province == 5) {
+			return Arrays.asList(
+					"Kapilvastu District",
+					"Parasi District",
+					"Rupandehi District",
+					"Arghakhanchi District",
+					"Gulmi District",
+					"Palpa District",
+					"Dang District",
+					"Pyuthan District",
+					"Rolpa District",
+					"Eastern Rukum District",
+					"Banke District",
+					"Bardiya District"
+					);
+			
+		} else if (province == 6) {
+			return Arrays.asList(
+					"Western Rukum District",
+					"Salyan District",
+					"Dolpa District",
+					"Humla District",
+					"Jumla District",
+					"Kalikot District",
+					"Mugu District",
+					"Surkhet District",
+					"Dailekh District",
+					"Jajarkot District"
+					);	
+		} else {
+			return Arrays.asList(
+					"Kailali District",
+					"Achham District",
+					"Doti District",
+					"Bajhang District",
+					"Bajura District",
+					"Kanchanpur District",
+					"Dadeldhura District",
+					"Baitadi District",
+					"Darchula District"
+					);
+		}
+	}
+
 	public String submit() {
 		
 		boolean submitted = StudentDAO.submit(first_name, last_name, email, roll_no, province, district, ward_no,
@@ -139,7 +259,6 @@ public class Student implements Serializable{
 	
 	@PostConstruct
 	public void init() {
-		districtList = Arrays.asList("foo", "bar", "baz");
 		
 		Student[] students = StudentDAO.getAllStudents();
 		setAllStudents(students);

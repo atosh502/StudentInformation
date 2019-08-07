@@ -3,7 +3,8 @@
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 	<h:outputStylesheet name="css/table-style.css"  />
 	<title>Student Information System</title>
@@ -11,7 +12,9 @@
 <h:body>
 	<h:form>
 		<p>Welcome #{login.user}</p>
+		<br></br>
 		
+		Here's a list of students currently enrolled.<br></br>
 		<h:dataTable value="#{student.allStudents}" var="student"
    			styleClass="info-table"
    			headerClass="info-table-header"

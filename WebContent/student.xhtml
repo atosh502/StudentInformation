@@ -6,6 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Add Student Information</title>
+	<h:outputStylesheet name="css/form-style.css"  />
 </h:head>
 
 <h:body>
@@ -13,56 +14,67 @@
 	<h:form>
 		<h3>Enter Student Information</h3>
 		<h:outputText value="First Name" />
-		<h:inputText id="first_name" value="#{student.first_name}" required="true"></h:inputText>
+		<br></br>
+		<h:inputText id="first_name" value="#{student.first_name}" required="true"/>
 		<h:message for="first_name"></h:message>
 		<br></br><br></br>
 			
 		<h:outputText value="Last Name" />
-		<h:inputText id="last_name" value="#{student.last_name}" required="true"></h:inputText>
+		<br></br>
+		<h:inputText id="last_name" value="#{student.last_name}" required="true"/>
 		<h:message for="last_name"></h:message>
 		<br></br><br></br>
 		
 		<h:outputText value="Email" />
-		<h:inputText id="email" value="#{student.email}" required="true"></h:inputText>
+		<br></br>
+		<h:inputText id="email" value="#{student.email}" required="true" />
 		<h:message for="email"></h:message>
 		<br></br><br></br>
 		
 		<h:outputText value="Roll No" />
-		<h:inputText id="roll_no" value="#{student.roll_no}" required="true"></h:inputText>
+		<br></br>
+		<h:inputText id="roll_no" value="#{student.roll_no}" required="true"/>
 		<h:message for="roll_no"></h:message>
 		<br></br><br></br>
 		
 		<h3>Enter Address Information</h3>
 		<h:outputText value="Province" />
+		<br></br>
 		<h:selectOneMenu value = "#{student.province}" id = "province_value"> 
+			<f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
 	   		<f:selectItem itemValue = "1" itemLabel = "Province 1" /> 
 	   		<f:selectItem itemValue = "2" itemLabel = "Province 2" />
 	   		<f:selectItem itemValue = "3" itemLabel = "Province 3" /> 
 	   		<f:selectItem itemValue = "4" itemLabel = "Province 4" /> 
 	   		<f:selectItem itemValue = "5" itemLabel = "Province 5" /> 
 	   		<f:selectItem itemValue = "6" itemLabel = "Province 6" /> 
-	   		<f:selectItem itemValue = "7" itemLabel = "Province 7" />  
+	   		<f:selectItem itemValue = "7" itemLabel = "Province 7" />
+	   		<f:ajax listener="#{student.loadDistricts}" render="district_value" />
 		</h:selectOneMenu> 
 		<br></br><br></br>
 	
 		<h:outputText value="District" />
-		<h:selectOneMenu value = "#{student.district}" id = "district_value"> 
-	   		<f:selectItem itemValue = "Kathmandu" itemLable = "Kathmandu"/>
-	   		<f:selectItem itemValue = "Pokhara" itemLable = "Pokhara"/>
-	   		<f:selectItem itemValue = "Dolpa" itemLable = "Dolpa"/>
+		<br></br>
+		<h:selectOneMenu value = "#{student.district}" id = "district_value" > 
+			<f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
+	   		<f:selectItems value="#{student.districtList}" var="district" 
+        		itemValue="#{district}" itemLabel="#{district}" />
+        	<f:ajax listener="#{student.loadLocalLevels}" render="local_level_value" />
 		</h:selectOneMenu>
 		<br></br><br></br> 
 		
 		<h:outputText value="VDC or Municipality" />
-		<h:selectOneMenu value = "#{student.local_level}" id = "local_level_value"> 
-	   		<f:selectItem itemValue = "Kathmandu Metropolitan" itemLable = "Kathmandu Metropolitan"/>
-	   		<f:selectItem itemValue = "Pokhara Metropolitan" itemLable = "Pokhara Metropolitan"/>
-	   		<f:selectItem itemValue = "Thuli Bheri Municipality" itemLable = "Thuli Bheri Municipality"/>
+		<br></br>
+		<h:selectOneMenu value = "#{student.local_level}" id = "local_level_value" >
+			<f:selectItem itemValue="#{null}" itemLabel="-- select one --" /> 
+			<f:selectItems value="#{student.localLevelList}" var="localLevel" 
+        		itemValue="#{localLevel}" itemLabel="#{localLevel}" />
 		</h:selectOneMenu>
 		<br></br><br></br> 
 		
 		<h:outputText value="Ward no" />
-		<h:inputText id="ward_no" value="#{student.ward_no}" required="true"></h:inputText>
+		<br></br>
+		<h:inputText id="ward_no" value="#{student.ward_no}" required="true" />
 		<br></br><br></br>
 		
 		<h:commandButton action="#{student.submit}" value="Submit"></h:commandButton>
