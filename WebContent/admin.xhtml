@@ -2,13 +2,66 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
+	<h:outputStylesheet name="css/table-style.css"  />
 	<title>Student Information System</title>
 </h:head>
 <h:body>
 	<h:form>
 		<p>Welcome #{login.user}</p>
+		
+		<h:dataTable value="#{student.allStudents}" var="student"
+   			styleClass="info-table"
+   			headerClass="info-table-header"
+   			rowClasses="info-table-odd-row,info-table-even-row">
+
+   			<h:column>
+   				<!-- column header -->
+   				<f:facet name="header">First Name</f:facet>
+   				<!-- row record -->
+   				#{student.first_name}
+   			</h:column>
+   			
+   			<h:column>
+   				<f:facet name="header">Last Name</f:facet>
+   				#{student.last_name}
+   			</h:column>
+   			
+   			<h:column>
+   				<f:facet name="header">Email</f:facet>
+   				#{student.email}
+   			</h:column>
+   			
+   			<h:column>
+   				<f:facet name="header">Roll No</f:facet>
+   				#{student.roll_no}
+   			</h:column>
+   			
+   			<h:column>
+   				<f:facet name="header">Province</f:facet>
+   				#{student.province}
+   			</h:column>
+   			
+   			<h:column>
+   				<f:facet name="header">District</f:facet>
+   				#{student.district}
+   			</h:column>
+   			
+   			<h:column>
+   				<f:facet name="header">VDC or Municipality</f:facet>
+   				#{student.local_level}
+   			</h:column>
+   			
+   			<h:column>
+   				<f:facet name="header">Ward No</f:facet>
+   				#{student.ward_no}
+   			</h:column>
+    		
+   		</h:dataTable>
+		<br />
+		<br />
 		<h:commandLink action="#{student.addNewStudent}" value="Add new Student"></h:commandLink><br />
 		<h:commandLink action="#{login.logout}" value="Logout"></h:commandLink><br />
 	</h:form>

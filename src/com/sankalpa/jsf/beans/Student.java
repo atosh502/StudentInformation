@@ -27,8 +27,21 @@ public class Student implements Serializable{
 	private String district;
 	private int ward_no;
 	private String local_level;
+
+	public Student() {}
 	
-	
+	public Student(String first_name, String last_name, String email, String roll_no, int province, String district,
+			int ward_no, String local_level) {
+		super();
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email = email;
+		this.roll_no = roll_no;
+		this.province = province;
+		this.district = district;
+		this.ward_no = ward_no;
+		this.local_level = local_level;
+	}
 	public int getProvince() {
 		return province;
 	}
@@ -97,11 +110,6 @@ public class Student implements Serializable{
 		return districtList;
 	}
 	
-	@PostConstruct
-	public void init() {
-		districtList = Arrays.asList("foo", "bar", "baz");
-	}
-	
 	public String submit() {
 		
 		boolean submitted = StudentDAO.submit(first_name, last_name, email, roll_no, province, district, ward_no,
@@ -117,6 +125,31 @@ public class Student implements Serializable{
 							"Please enter correct student information and address"));
 			return "student";
 		}
+	}
+	
+	private Student[] allStudents;
+	
+	public void setAllStudents(Student[] students) {
+		this.allStudents = students;
+	}
+
+	public Student[] getAllStudents() {
+		return allStudents;
+	}
+	
+	@PostConstruct
+	public void init() {
+		districtList = Arrays.asList("foo", "bar", "baz");
+		
+		Student[] students = StudentDAO.getAllStudents();
+		setAllStudents(students);
+	}
+
+	@Override
+	public String toString() {
+		return "Student [first_name=" + first_name + ", last_name=" + last_name + ", email=" + email + ", roll_no="
+				+ roll_no + ", province=" + province + ", district=" + district + ", ward_no=" + ward_no
+				+ ", local_level=" + local_level + "]";
 	}
 
 }
