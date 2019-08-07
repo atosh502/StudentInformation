@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Add Student Information</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<h3>Enter Student Information</h3>
+		<h:outputText value="First Name" />
+		<h:inputText id="first_name" value="#{student.first_name}" required="true"></h:inputText>
+		<h:message for="first_name"></h:message>
+		<br></br><br></br>
+			
+		<h:outputText value="Last Name" />
+		<h:inputText id="last_name" value="#{student.last_name}" required="true"></h:inputText>
+		<h:message for="last_name"></h:message>
+		<br></br><br></br>
+		
+		<h:outputText value="Email" />
+		<h:inputText id="email" value="#{student.email}" required="true"></h:inputText>
+		<h:message for="email"></h:message>
+		<br></br><br></br>
+		
+		<h:outputText value="Roll No" />
+		<h:inputText id="roll_no" value="#{student.roll_no}" required="true"></h:inputText>
+		<h:message for="roll_no"></h:message>
+		<br></br><br></br>
+		
+		<h3>Enter Address Information</h3>
+		<h:outputText value="Province" />
+		<h:selectOneMenu value = "#{student.province}" id = "province_value"> 
+	   		<f:selectItem itemValue = "1" itemLabel = "Province 1" /> 
+	   		<f:selectItem itemValue = "2" itemLabel = "Province 2" />
+	   		<f:selectItem itemValue = "3" itemLabel = "Province 3" /> 
+	   		<f:selectItem itemValue = "4" itemLabel = "Province 4" /> 
+	   		<f:selectItem itemValue = "5" itemLabel = "Province 5" /> 
+	   		<f:selectItem itemValue = "6" itemLabel = "Province 6" /> 
+	   		<f:selectItem itemValue = "7" itemLabel = "Province 7" />  
+		</h:selectOneMenu> 
+		<br></br><br></br>
+	
+		<h:outputText value="District" />
+		<h:selectOneMenu value = "#{student.district}" id = "district_value"> 
+	   		<f:selectItem itemValue = "Kathmandu" itemLable = "Kathmandu"/>
+	   		<f:selectItem itemValue = "Pokhara" itemLable = "Pokhara"/>
+	   		<f:selectItem itemValue = "Dolpa" itemLable = "Dolpa"/>
+		</h:selectOneMenu>
+		<br></br><br></br> 
+		
+		<h:outputText value="VDC or Municipality" />
+		<h:selectOneMenu value = "#{student.local_level}" id = "local_level_value"> 
+	   		<f:selectItem itemValue = "Kathmandu Metropolitan" itemLable = "Kathmandu Metropolitan"/>
+	   		<f:selectItem itemValue = "Pokhara Metropolitan" itemLable = "Pokhara Metropolitan"/>
+	   		<f:selectItem itemValue = "Thuli Bheri Municipality" itemLable = "Thuli Bheri Municipality"/>
+		</h:selectOneMenu>
+		<br></br><br></br> 
+		
+		<h:outputText value="Ward no" />
+		<h:inputText id="ward_no" value="#{student.ward_no}" required="true"></h:inputText>
+		<br></br><br></br>
+		
+		<h:commandButton action="#{student.submit}" value="Submit"></h:commandButton>
+	</h:form>
+	
+</h:body>
+</html>
