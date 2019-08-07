@@ -15,32 +15,45 @@
 		<h3>Enter Student Information</h3>
 		<h:outputText value="First Name" />
 		<br></br>
-		<h:inputText id="first_name" value="#{student.first_name}" required="true"/>
-		<h:message for="first_name"></h:message>
+		<h:inputText id="first_name" value="#{student.first_name}" required="true" 
+			requiredMessage="First Name is required" validatorMessage="First name can have only alphabets">
+			<f:validateRegex pattern="^([a-zA-Z]+(.)?[\s]*)$" />  
+		</h:inputText>
+		<h:message for="first_name" style="color:red"></h:message>
 		<br></br><br></br>
 			
 		<h:outputText value="Last Name" />
 		<br></br>
-		<h:inputText id="last_name" value="#{student.last_name}" required="true"/>
-		<h:message for="last_name"></h:message>
+		<h:inputText id="last_name" value="#{student.last_name}" required="true"
+			requiredMessage="Last Name is required" validatorMessage="Last name can have only alphabets">
+			<f:validateRegex pattern="^([a-zA-Z]+(.)?[\s]*)$" /> 
+		</h:inputText>
+		<h:message for="last_name" style="color:red"></h:message>
 		<br></br><br></br>
 		
 		<h:outputText value="Email" />
 		<br></br>
-		<h:inputText id="email" value="#{student.email}" required="true" />
-		<h:message for="email"></h:message>
+		<h:inputText id="email" value="#{student.email}" required="true" requiredMessage="Email is required"
+			validatorMessage="Email must be valid">
+			<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+		</h:inputText>
+		<h:message for="email" style="color:red"></h:message>
 		<br></br><br></br>
 		
 		<h:outputText value="Roll No" />
 		<br></br>
-		<h:inputText id="roll_no" value="#{student.roll_no}" required="true"/>
-		<h:message for="roll_no"></h:message>
+		<h:inputText id="roll_no" value="#{student.roll_no}" required="true" requiredMessage="Roll No is required"
+			validatorMessage="Roll No must contain only alphanumeric characters">
+			<f:validateRegex pattern="^([A-Za-z0-9])+$" />
+		</h:inputText>
+		<h:message for="roll_no" style="color:red"></h:message>
 		<br></br><br></br>
 		
 		<h3>Enter Address Information</h3>
 		<h:outputText value="Province" />
 		<br></br>
-		<h:selectOneMenu value = "#{student.province}" id = "province_value"> 
+		<h:selectOneMenu value = "#{student.province}" id = "province_value" required="true" 
+			requiredMessage="Please select a province"> 
 			<f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
 	   		<f:selectItem itemValue = "1" itemLabel = "Province 1" /> 
 	   		<f:selectItem itemValue = "2" itemLabel = "Province 2" />
@@ -51,30 +64,39 @@
 	   		<f:selectItem itemValue = "7" itemLabel = "Province 7" />
 	   		<f:ajax listener="#{student.loadDistricts}" render="district_value" />
 		</h:selectOneMenu> 
+		<h:message for="province_value" style="color:red"></h:message>
 		<br></br><br></br>
 	
 		<h:outputText value="District" />
 		<br></br>
-		<h:selectOneMenu value = "#{student.district}" id = "district_value" > 
+		<h:selectOneMenu value = "#{student.district}" id = "district_value" required="true" 
+			requiredMessage="Please select a district"> 
 			<f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
 	   		<f:selectItems value="#{student.districtList}" var="district" 
         		itemValue="#{district}" itemLabel="#{district}" />
         	<f:ajax listener="#{student.loadLocalLevels}" render="local_level_value" />
 		</h:selectOneMenu>
+		<h:message for="district_value" style="color:red"></h:message>
 		<br></br><br></br> 
 		
 		<h:outputText value="VDC or Municipality" />
 		<br></br>
-		<h:selectOneMenu value = "#{student.local_level}" id = "local_level_value" >
+		<h:selectOneMenu value = "#{student.local_level}" id = "local_level_value" required="true" 
+			requiredMessage="Please select a VDC or Municipality">
 			<f:selectItem itemValue="#{null}" itemLabel="-- select one --" /> 
 			<f:selectItems value="#{student.localLevelList}" var="localLevel" 
         		itemValue="#{localLevel}" itemLabel="#{localLevel}" />
 		</h:selectOneMenu>
+		<h:message for="local_level_value" style="color:red"></h:message>
 		<br></br><br></br> 
 		
 		<h:outputText value="Ward no" />
 		<br></br>
-		<h:inputText id="ward_no" value="#{student.ward_no}" required="true" />
+		<h:inputText id="ward_no" value="#{student.ward_no}" required="true" 
+			requiredMessage="Please enter a Ward no. value" validatorMessage="Ward no. must be between 1 and 100">
+			<f:validateLongRange minimum="1" maximum="100" />  />
+		</h:inputText>
+		<h:message for="ward_no" style="color:red"></h:message>
 		<br></br><br></br>
 		
 		<h:commandButton action="#{student.submit}" value="Submit"></h:commandButton>

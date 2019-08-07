@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -112,7 +113,7 @@ public class Student implements Serializable{
 	}
 	
 	public void loadDistricts() {
-		this.districtList = getDistricts(province);
+		this.districtList = AdministrativeLevels.getDistricts(province);
 	}
 	
 	private List<String> localLevelList;
@@ -125,110 +126,6 @@ public class Student implements Serializable{
 		this.localLevelList = AdministrativeLevels.getLocalLevels(district);
 	}
 	
-	public List<String> getDistricts(int province){
-		if (province == 1) {
-			return Arrays.asList(
-					"Bhojpur District",
-					"Dhankuta District",
-					"Ilam District",
-					"Jhapa District",
-					"Khotang District",
-					"Morang District",
-					"Okhaldhunga District",
-					"Panchthar District",
-					"Sankhuwasabha district",
-					"Solukhumbu District",
-					"Sunsari District",
-					"Taplejung District",
-					"Terhathum District",
-					"Udayapur District"
-					);
-		} else if (province == 2) {
-			return Arrays.asList(
-					"Saptari District",
-					"Siraha District",
-					"Dhanusa District",
-					"Mahottari District",
-					"Sarlahi District",
-					"Bara District",
-					"Parsa District",
-					"Rautahat District"
-					);
-					
-		} else if (province == 3) {
-			return Arrays.asList(
-					"Sindhuli District",
-					"Ramechhap District",
-					"Dolakha District",
-					"Bhaktapur District",
-					"Dhading District",
-					"Kathmandu District",
-					"Kavrepalanchok District",
-					"Lalitpur District",
-					"Nuwakot District",
-					"Rasuwa District",
-					"Sindhupalchok District",
-					"Chitwan District",
-					"Makwanpur District"
-					);
-		} else if (province == 4) {
-			return Arrays.asList(
-					"Gorkha District",
-					"Kaski District",
-					"Lamjung District",
-					"Syangja District",
-					"Tanahun District",
-					"Manang District",
-					"Nawalpur District",
-					"Baglung District",
-					"Myagdi District",
-					"Parbat District",
-					"Mustang District"
-					);
-			
-		} else if (province == 5) {
-			return Arrays.asList(
-					"Kapilvastu District",
-					"Parasi District",
-					"Rupandehi District",
-					"Arghakhanchi District",
-					"Gulmi District",
-					"Palpa District",
-					"Dang District",
-					"Pyuthan District",
-					"Rolpa District",
-					"Eastern Rukum District",
-					"Banke District",
-					"Bardiya District"
-					);
-			
-		} else if (province == 6) {
-			return Arrays.asList(
-					"Western Rukum District",
-					"Salyan District",
-					"Dolpa District",
-					"Humla District",
-					"Jumla District",
-					"Kalikot District",
-					"Mugu District",
-					"Surkhet District",
-					"Dailekh District",
-					"Jajarkot District"
-					);	
-		} else {
-			return Arrays.asList(
-					"Kailali District",
-					"Achham District",
-					"Doti District",
-					"Bajhang District",
-					"Bajura District",
-					"Kanchanpur District",
-					"Dadeldhura District",
-					"Baitadi District",
-					"Darchula District"
-					);
-		}
-	}
 
 	public String submit() {
 		

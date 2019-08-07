@@ -14,14 +14,16 @@
 		<h3>Login</h3>
 		<h:outputText value="Username"/>
 		<br></br>
-		<h:inputText id="username" value="#{login.user}"></h:inputText>
-		<h:message for="username"></h:message>
+		<h:inputText id="username" value="#{login.user}" required="true" requiredMessage="Username is required">
+		</h:inputText>
+		<h:message id="username-message" for="username" style="color:red"></h:message>
+		  
 		<br></br><br></br>
 		
 		<h:outputText value="Password" />
 		<br></br>
-		<h:inputSecret id="password" value="#{login.pwd}"></h:inputSecret>
-		<h:message for="password"></h:message>
+		<h:inputSecret id="password" value="#{login.pwd}" required="true" requiredMessage="Password is required"></h:inputSecret>
+		<h:message for="password" id="password-required" style="color:red"></h:message>
 		<br></br><br></br>
 		
 		<h:commandButton action="#{login.validateUsernamePassword}"

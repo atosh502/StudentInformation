@@ -23,6 +23,15 @@
 	</navigation-rule>
 	
 	<navigation-rule>
+		<from-view-id>/admin.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
 		<from-view-id>/student.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>admin</from-outcome>
