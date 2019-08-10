@@ -1,5 +1,20 @@
 # StudentInformation
 
+### Project Members
+* 072BCT502 - Aashutosh Poudel  
+* 072BCT529 - Rohan Thapa       
+* 072BCT530 - Rupesh Shrestha   
+
+### Built on 
+* Eclipse 2019-03 (4.11.0)
+* JDK 1.8
+
+### Login Credentials
+* username: `admin`, password: `admin`
+
+### Starting Page
+* http://localhost:8080/JSF_StudentInformation/faces/login.xhtml
+
 ### Setup MySQL database:
 ~~~
 create database eadd_db;
@@ -44,8 +59,3 @@ references student(sid)
 on delete cascade
 on update cascade);
 ~~~
-### Login Credentials
-* username: `admin`, password: `admin`
-
-### Starting Page
-* http://localhost:8080/JSF_StudentInformation/faces/login.xhtml
